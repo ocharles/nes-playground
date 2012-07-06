@@ -21,6 +21,8 @@ ALTER TABLE artist_meta ADD PRIMARY KEY (artist_id);
 ALTER TABLE artist_name ADD PRIMARY KEY (name);
 ALTER TABLE artist_name ADD UNIQUE (id);
 
+ALTER TABLE artist_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE artist_tag ADD PRIMARY KEY (artist_id, tag_id);
 
 ALTER TABLE artist_tree ADD PRIMARY KEY (artist_tree_id);
@@ -62,7 +64,11 @@ ALTER TABLE label_meta ADD PRIMARY KEY (label_id);
 ALTER TABLE label_name ADD PRIMARY KEY (name);
 ALTER TABLE label_name ADD UNIQUE (id);
 
+ALTER TABLE label_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE label_tag ADD PRIMARY KEY (label_id, tag_id);
+
+ALTER TABLE label_tree ADD PRIMARY KEY (label_tree_id);
 
 ALTER TABLE label_type ADD PRIMARY KEY (name);
 ALTER TABLE label_type ADD UNIQUE (id);
@@ -109,7 +115,11 @@ ALTER TABLE recording_data ADD PRIMARY KEY (recording_data_id);
 
 ALTER TABLE recording_meta ADD PRIMARY KEY (recording_id);
 
+ALTER TABLE recording_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE recording_tag ADD PRIMARY KEY (recording_id, tag_id);
+
+ALTER TABLE recording_tree ADD PRIMARY KEY (recording_tree_id);
 
 ALTER TABLE release ADD PRIMARY KEY (release_id);
 
@@ -126,8 +136,12 @@ ALTER TABLE release_group_meta ADD PRIMARY KEY (release_group_id);
 ALTER TABLE release_group_primary_type ADD PRIMARY KEY (name);
 ALTER TABLE release_group_primary_type ADD UNIQUE (id);
 
+ALTER TABLE release_group_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE release_group_secondary_type ADD PRIMARY KEY (name);
 ALTER TABLE release_group_secondary_type ADD UNIQUE (id);
+
+ALTER TABLE release_group_tree ADD PRIMARY KEY (release_group_tree_id);
 
 ALTER TABLE release_group_tag ADD PRIMARY KEY (release_group_id, tag_id);
 
@@ -146,12 +160,16 @@ ALTER TABLE release_name ADD UNIQUE (id);
 ALTER TABLE release_packaging ADD PRIMARY KEY (name);
 ALTER TABLE release_packaging ADD UNIQUE (id);
 
+ALTER TABLE release_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE release_status ADD PRIMARY KEY (name);
 ALTER TABLE release_status ADD UNIQUE (id);
 
 ALTER TABLE release_tag ADD PRIMARY KEY (release_id, tag_id);
 
 ALTER TABLE release_tree ADD PRIMARY KEY (release_tree_id);
+
+ALTER TABLE revision ADD PRIMARY KEY (revision_id);
 
 ALTER TABLE script ADD PRIMARY KEY (iso_code);
 ALTER TABLE script ADD UNIQUE (iso_number);
@@ -179,6 +197,8 @@ ALTER TABLE url ADD PRIMARY KEY (url_id);
 
 ALTER TABLE url_data ADD PRIMARY KEY (url_data_id);
 
+ALTER TABLE url_revision ADD PRIMARY KEY (revision_id);
+
 ALTER TABLE url_tree ADD PRIMARY KEY (url_tree_id);
 
 ALTER TABLE work ADD PRIMARY KEY (work_id);
@@ -195,6 +215,8 @@ ALTER TABLE work_meta ADD PRIMARY KEY (work_id);
 
 ALTER TABLE work_name ADD PRIMARY KEY (name);
 ALTER TABLE work_name ADD UNIQUE (id);
+
+ALTER TABLE work_revision ADD PRIMARY KEY (revision_id);
 
 ALTER TABLE work_tag ADD PRIMARY KEY (work_id, tag_id);
 

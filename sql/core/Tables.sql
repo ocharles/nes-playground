@@ -1,5 +1,11 @@
 BEGIN;
 
+CREATE TABLE artist_revision (
+    revision_id integer NOT NULL,
+    artist_id uuid NOT NULL,
+    artist_tree_id integer NOT NULL
+);
+
 CREATE TABLE artist (
     artist_id uuid NOT NULL,
     master_revision_id integer NOT NULL,
@@ -177,10 +183,22 @@ CREATE TABLE label_name (
     name non_empty_presentational_text NOT NULL
 );
 
+CREATE TABLE label_revision (
+    revision_id integer NOT NULL,
+    label_id uuid NOT NULL,
+    label_tree_id integer NOT NULL
+);
+
 CREATE TABLE label_tag (
     label_id uuid NULL,
     tag_id integer NOT NULL,
     count positive_integer NOT NULL
+);
+
+CREATE TABLE label_tree (
+    label_tree_id serial NOT NULL,
+    label_data_id integer NOT NULL,
+    annotation TEXT
 );
 
 CREATE TABLE label_type (
@@ -288,7 +306,7 @@ CREATE TABLE recording (
 CREATE TABLE recording_data (
     recording_data_id serial,
     name integer NOT NULL,
-    artist_credit integer NOT NULL,
+    artist_credit_id integer NOT NULL,
     length positive_integer,
     comment presentational_text NOT NULL DEFAULT ''
 );
@@ -300,7 +318,13 @@ CREATE TABLE recording_meta (
 );
 
 CREATE TABLE recording_puid (
-    puid integer NOT NULL,
+    puid_id integer NOT NULL,
+    recording_tree_id integer NOT NULL
+);
+
+CREATE TABLE recording_revision (
+    revision_id integer NOT NULL,
+    recording_id uuid NOT NULL,
     recording_tree_id integer NOT NULL
 );
 
@@ -308,6 +332,12 @@ CREATE TABLE recording_tag (
     recording_id uuid NULL,
     tag_id integer NOT NULL,
     count positive_integer NOT NULL
+);
+
+CREATE TABLE recording_tree (
+    recording_tree_id integer NOT NULL,
+    recording_data_id integer NOT NULL,
+    annotation text
 );
 
 CREATE TABLE release (
@@ -363,6 +393,12 @@ CREATE TABLE release_packaging (
     name non_empty_presentational_text NOT NULL
 );
 
+CREATE TABLE release_revision (
+    revision_id integer NOT NULL,
+    release_id uuid NOT NULL,
+    release_tree_id integer NOT NULL
+);
+
 CREATE TABLE release_status (
     id serial,
     name non_empty_presentational_text NOT NULL
@@ -396,10 +432,22 @@ CREATE TABLE release_group_meta (
     rating_count natural_integer NOT NULL
 );
 
+CREATE TABLE release_group_revision (
+    revision_id integer NOT NULL,
+    release_group_id uuid NOT NULL,
+    release_group_tree_id integer NOT NULL
+);
+
 CREATE TABLE release_group_tag (
     release_group_id uuid NULL,
     tag_id integer NOT NULL,
     count positive_integer NOT NULL
+);
+
+CREATE TABLE release_group_tree (
+    release_group_tree_id integer NOT NULL,
+    release_group_data_id integer NOT NULL,
+    annotation text
 );
 
 CREATE TABLE release_group_primary_type (
@@ -420,6 +468,12 @@ CREATE TABLE release_group_tree_secondary_type (
 CREATE TABLE release_name (
     id serial,
     name non_empty_presentational_text NOT NULL
+);
+
+CREATE TABLE revision (
+    revision_id serial,
+    editor_id integer NOT NULL,
+    created_at timestamp WITH TIME ZONE NOT NULL DEFAULT now()
 );
 
 CREATE TABLE script (
@@ -495,6 +549,12 @@ CREATE TABLE url_tree (
     annotation text
 );
 
+CREATE TABLE url_revision (
+    revision_id integer NOT NULL,
+    url_id uuid NOT NULL,
+    url_tree_id integer NOT NULL
+);
+
 CREATE TABLE work (
     work_id uuid NOT NULL,
     master_revision_id integer NOT NULL,
@@ -506,7 +566,13 @@ CREATE TABLE work_data (
     name integer NOT NULL,
     work_type_id integer,
     comment presentational_text NOT NULL DEFAULT '',
-    language integer
+    language_id integer
+);
+
+CREATE TABLE work_revision (
+    revision_id integer NOT NULL,
+    work_id uuid NOT NULL,
+    work_tree_id integer NOT NULL
 );
 
 CREATE TABLE work_tree (

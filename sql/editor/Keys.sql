@@ -1,0 +1,5 @@
+BEGIN;
+
+ALTER TABLE editor ADD PRIMARY KEY (editor_id);
+
+COMMIT;
