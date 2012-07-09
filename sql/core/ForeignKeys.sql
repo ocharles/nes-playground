@@ -8,8 +8,6 @@ ALTER TABLE artist_alias ADD FOREIGN KEY (name) REFERENCES artist_name (id);
 ALTER TABLE artist_alias ADD FOREIGN KEY (sort_name) REFERENCES artist_name (id);
 ALTER TABLE artist_alias ADD FOREIGN KEY (artist_alias_type_id) REFERENCES artist_alias_type (id);
 
-ALTER TABLE artist_credit ADD FOREIGN KEY (name) REFERENCES artist_name (id);
-
 ALTER TABLE artist_credit_name ADD FOREIGN KEY (artist_credit_id) REFERENCES artist_credit (artist_credit_id);
 ALTER TABLE artist_credit_name ADD FOREIGN KEY (artist_id) REFERENCES artist (artist_id);
 ALTER TABLE artist_credit_name ADD FOREIGN KEY (name) REFERENCES artist_name (id);

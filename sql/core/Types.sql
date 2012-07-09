@@ -33,7 +33,7 @@ CREATE DOMAIN presentational_text AS single_line;
 CREATE DOMAIN non_empty_presentational_text AS presentational_text;
 -- CHECK (VALUE ~ E'.+');
 
-CREATE DOMAIN locale AS varchar(10)
+CREATE DOMAIN locale AS varchar(30)
 CHECK (VALUE ~ E'^[a-zA-Z_]+$');
 
 CREATE DOMAIN isrc_t AS char(12)

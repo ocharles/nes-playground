@@ -70,10 +70,7 @@ CREATE TABLE artist_tag (
 );
 
 CREATE TABLE artist_credit (
-    artist_credit_id serial,
-    name integer NOT NULL,
-    artist_count positive_integer NOT NULL,
-    ref_count natural_integer DEFAULT 0
+    artist_credit_id serial
 );
 
 CREATE TABLE artist_credit_name (
@@ -271,7 +268,7 @@ CREATE TABLE medium (
     tracklist_id integer NOT NULL,
     release_tree_id integer NOT NULL,
     position positive_integer NOT NULL,
-    format integer,
+    medium_format_id integer,
     name non_empty_presentational_text
 );
 
