@@ -50,4 +50,15 @@ INSERT INTO release_group_secondary_type (id, name) SELECT id, name FROM musicbr
 \i migrate/migrate-work.sql
 \i migrate/migrate-url.sql
 
+-- Temp fix for primary keys
+DELETE FROM medium WHERE (release_tree_id, position) IN (
+  SELECT release_tree_id, position FROM medium
+  GROUP BY release_tree_id, position HAVING count(*) > 1
+);
+
+DELETE FROM track WHERE (tracklist_id, position) IN (
+  SELECT tracklist_id, position FROM track
+  GROUP BY tracklist_id, position HAVING count(*) > 1
+);
+
 DROP SEQUENCE revision_id_offset;
