@@ -38,6 +38,8 @@ INSERT INTO label_type SELECT * FROM musicbrainz.label_type;
 INSERT INTO medium_format SELECT * FROM musicbrainz.medium_format;
 INSERT INTO clientversion SELECT * FROM musicbrainz.clientversion;
 INSERT INTO puid (id, puid, version) SELECT id, puid::uuid, version FROM musicbrainz.puid;
+INSERT INTO work_alias_type SELECT * FROM musicbrainz.work_alias_type;
+INSERT INTO work_type SELECT * FROM musicbrainz.work_type;
 
 INSERT INTO release_group_primary_type (id, name) SELECT id, name FROM musicbrainz.release_group_primary_type;
 INSERT INTO release_group_secondary_type (id, name) SELECT id, name FROM musicbrainz.release_group_secondary_type;

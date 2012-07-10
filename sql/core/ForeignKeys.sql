@@ -76,7 +76,7 @@ ALTER TABLE link_type_attribute_type ADD FOREIGN KEY (attribute_type) REFERENCES
 
 ALTER TABLE medium ADD FOREIGN KEY (tracklist_id) REFERENCES tracklist (id);
 ALTER TABLE medium ADD FOREIGN KEY (release_tree_id) REFERENCES release_tree (release_tree_id);
-ALTER TABLE medium ADD FOREIGN KEY (format) REFERENCES medium_format (id);
+ALTER TABLE medium ADD FOREIGN KEY (medium_format_id) REFERENCES medium_format (id);
 
 ALTER TABLE medium_cdtoc ADD FOREIGN KEY (release_tree_id, position) REFERENCES medium (release_tree_id, position);
 ALTER TABLE medium_cdtoc ADD FOREIGN KEY (cdtoc) REFERENCES cdtoc (id);
