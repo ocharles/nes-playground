@@ -12,9 +12,9 @@ CREATE SCHEMA musicbrainz AUTHORIZATION musicbrainz;
 ALTER USER musicbrainz SET search_path TO musicbrainz, public;
 
 SET search_path = musicbrainz, public;
-\ir sql/core/Types.sql
-\ir sql/core/Tables.sql
-\ir sql/core/Keys.sql
-\ir sql/editor/Tables.sql
-\ir sql/editor/Keys.sql
-\ir sql/core/ForeignKeys.sql
+\i sql/core/Types.sql
+\i sql/core/Tables.sql
+\i sql/core/Keys.sql
+\i sql/editor/Tables.sql
+\i sql/editor/Keys.sql
+\i sql/core/ForeignKeys.sql
