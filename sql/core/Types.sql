@@ -1,11 +1,5 @@
 BEGIN;
 
-CREATE TYPE partial_date AS (
-  year SMALLINT,
-  month SMALLINT,
-  day SMALLINT
-);
-
 CREATE DOMAIN comment AS TEXT;
 
 CREATE DOMAIN ipi AS CHAR(11)

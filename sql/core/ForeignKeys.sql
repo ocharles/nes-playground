@@ -1,6 +1,6 @@
 BEGIN;
 
-ALTER TABLE artist ADD FOREIGN KEY (master_revision_id) REFERENCES artist_revision (revision_id);
+ALTER TABLE artist ADD FOREIGN KEY (master_revision_id) REFERENCES artist_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE artist ADD FOREIGN KEY (merged_into) REFERENCES artist (artist_id);
 
 ALTER TABLE artist_alias ADD FOREIGN KEY (artist_tree_id) REFERENCES artist_tree (artist_tree_id);
@@ -35,7 +35,7 @@ ALTER TABLE isrc ADD FOREIGN KEY (recording_tree_id) REFERENCES recording_tree (
 
 ALTER TABLE iswc ADD FOREIGN KEY (work_tree_id) REFERENCES work_tree (work_tree_id);
 
-ALTER TABLE label ADD FOREIGN KEY (master_revision_id) REFERENCES label_revision (revision_id);
+ALTER TABLE label ADD FOREIGN KEY (master_revision_id) REFERENCES label_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE label ADD FOREIGN KEY (merged_into) REFERENCES label (label_id);
 
 ALTER TABLE label_alias ADD FOREIGN KEY (label_tree_id) REFERENCES label_tree (label_tree_id);
@@ -83,7 +83,7 @@ ALTER TABLE medium_cdtoc ADD FOREIGN KEY (cdtoc) REFERENCES cdtoc (id);
 
 ALTER TABLE medium_format ADD FOREIGN KEY (parent) REFERENCES medium_format (id);
 
-ALTER TABLE recording ADD FOREIGN KEY (master_revision_id) REFERENCES recording_revision (revision_id);
+ALTER TABLE recording ADD FOREIGN KEY (master_revision_id) REFERENCES recording_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE recording ADD FOREIGN KEY (merged_into) REFERENCES recording (recording_id);
 
 ALTER TABLE recording_data ADD FOREIGN KEY (name) REFERENCES track_name (id);
@@ -103,7 +103,7 @@ ALTER TABLE recording_tag ADD FOREIGN KEY (tag_id) REFERENCES tag (id);
 
 ALTER TABLE recording_tree ADD FOREIGN KEY (recording_data_id) REFERENCES recording_data (recording_data_id);
 
-ALTER TABLE release ADD FOREIGN KEY (master_revision_id) REFERENCES release_revision (revision_id);
+ALTER TABLE release ADD FOREIGN KEY (master_revision_id) REFERENCES release_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE release ADD FOREIGN KEY (merged_into) REFERENCES release (release_id);
 
 ALTER TABLE release_coverart ADD FOREIGN KEY (release_id) REFERENCES release (release_id);
@@ -115,7 +115,7 @@ ALTER TABLE release_data ADD FOREIGN KEY (country_id) REFERENCES country (id);
 ALTER TABLE release_data ADD FOREIGN KEY (language_id) REFERENCES language (id);
 ALTER TABLE release_data ADD FOREIGN KEY (script_id) REFERENCES script (id);
 
-ALTER TABLE release_group ADD FOREIGN KEY (master_revision_id) REFERENCES release_group_revision (revision_id);
+ALTER TABLE release_group ADD FOREIGN KEY (master_revision_id) REFERENCES release_group_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE release_group ADD FOREIGN KEY (merged_into) REFERENCES release_group (release_group_id);
 
 ALTER TABLE release_group_data ADD FOREIGN KEY (artist_credit_id) REFERENCES artist_credit (artist_credit_id);
@@ -166,7 +166,7 @@ ALTER TABLE track ADD FOREIGN KEY (artist_credit_id) REFERENCES artist_credit (a
 
 ALTER TABLE tracklist_index ADD FOREIGN KEY (tracklist) REFERENCES tracklist (id);
 
-ALTER TABLE url ADD FOREIGN KEY (master_revision_id) REFERENCES url_revision (revision_id);
+ALTER TABLE url ADD FOREIGN KEY (master_revision_id) REFERENCES url_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE url ADD FOREIGN KEY (merged_into) REFERENCES url (url_id);
 
 ALTER TABLE url_revision ADD FOREIGN KEY (url_id) REFERENCES url (url_id);
@@ -175,7 +175,7 @@ ALTER TABLE url_revision ADD FOREIGN KEY (url_tree_id) REFERENCES url_tree (url_
 
 ALTER TABLE url_tree ADD FOREIGN KEY (url_data_id) REFERENCES url_data (url_data_id);
 
-ALTER TABLE work ADD FOREIGN KEY (master_revision_id) REFERENCES work_revision (revision_id);
+ALTER TABLE work ADD FOREIGN KEY (master_revision_id) REFERENCES work_revision (revision_id) DEFERRABLE INITIALLY DEFERRED;
 ALTER TABLE work ADD FOREIGN KEY (merged_into) REFERENCES work (work_id);
 
 ALTER TABLE work_alias ADD FOREIGN KEY (work_tree_id) REFERENCES work_tree (work_tree_id);

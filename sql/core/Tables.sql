@@ -21,8 +21,12 @@ CREATE TABLE artist_data (
     artist_data_id serial NOT NULL,
     name integer NOT NULL,
     sort_name integer NOT NULL,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     artist_type_id integer,
     country_id integer,
     gender_id integer,
@@ -41,13 +45,17 @@ CREATE TABLE artist_alias (
     sort_name integer NOT NULL,
     locale locale,
     artist_alias_type_id integer,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     primary_for_locale boolean NOT NULL DEFAULT false
 );
 
 CREATE TABLE artist_tree (
-    artist_tree_id integer NOT NULL,
+    artist_tree_id serial NOT NULL,
     artist_data_id integer NOT NULL,
     annotation text
 );
@@ -139,8 +147,12 @@ CREATE TABLE label_data (
     label_data_id serial,
     name integer NOT NULL,
     sort_name integer NOT NULL,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     label_type_id integer,
     label_code label_code,
     country_id integer,
@@ -159,8 +171,12 @@ CREATE TABLE label_alias (
     sort_name integer NOT NULL,
     locale locale,
     label_alias_type_id integer,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     primary_for_locale boolean NOT NULL DEFAULT false
 );
 
@@ -216,8 +232,12 @@ CREATE TABLE language (
 CREATE TABLE link (
     id serial,
     link_type integer NOT NULL,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     attribute_count natural_integer NOT NULL DEFAULT 0,
     created timestamp WITH TIME ZONE DEFAULT NOW(),
     ended boolean NOT NULL DEFAULT FALSE
@@ -332,7 +352,7 @@ CREATE TABLE recording_tag (
 );
 
 CREATE TABLE recording_tree (
-    recording_tree_id integer NOT NULL,
+    recording_tree_id serial NOT NULL,
     recording_data_id integer NOT NULL,
     annotation text
 );
@@ -359,7 +379,9 @@ CREATE TABLE release_data (
     country_id integer,
     language_id integer,
     script_id integer,
-    date partial_date,
+    date_year smallint,
+    date_month smallint,
+    date_day smallint,
     barcode varchar(255),
     comment presentational_text NOT NULL DEFAULT ''
 );
@@ -424,7 +446,9 @@ CREATE TABLE release_group_data (
 CREATE TABLE release_group_meta (
     release_group_id uuid NOT NULL,
     release_count natural_integer NOT NULL DEFAULT 0,
-    first_release_date partial_date,
+    first_release_date_year smallint,
+    first_release_date_month smallint,
+    first_release_date_day smallint,
     rating rating,
     rating_count natural_integer NOT NULL
 );
@@ -442,7 +466,7 @@ CREATE TABLE release_group_tag (
 );
 
 CREATE TABLE release_group_tree (
-    release_group_tree_id integer NOT NULL,
+    release_group_tree_id serial NOT NULL,
     release_group_data_id integer NOT NULL,
     annotation text
 );
@@ -541,7 +565,7 @@ CREATE TABLE url_data (
 );
 
 CREATE TABLE url_tree (
-    url_tree_id integer NOT NULL,
+    url_tree_id serial NOT NULL,
     url_data_id integer NOT NULL,
     annotation text
 );
@@ -573,7 +597,7 @@ CREATE TABLE work_revision (
 );
 
 CREATE TABLE work_tree (
-    work_tree_id integer NOT NULL,
+    work_tree_id serial NOT NULL,
     work_data_id integer NOT NULL,
     annotation text
 );
@@ -589,8 +613,12 @@ CREATE TABLE work_alias (
     sort_name integer NOT NULL,
     locale locale,
     work_alias_type_id integer,
-    begin_date partial_date,
-    end_date partial_date,
+    begin_date_year smallint,
+    begin_date_month smallint,
+    begin_date_day smallint,
+    end_date_year smallint,
+    end_date_month smallint,
+    end_date_day smallint,
     primary_for_locale boolean NOT NULL DEFAULT false
 );
 
